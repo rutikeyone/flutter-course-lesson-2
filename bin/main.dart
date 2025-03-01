@@ -1,30 +1,21 @@
+class DiscountCalculator {
+  double calculateDiscount(String userType, double amount) {
+    if (userType == "regular") {
+      return amount * 0.1; // 10% скидка для обычных пользователей
+    } else if (userType == "premium") {
+      return amount * 0.2; // 20% скидка для премиум пользователей
+    }
+    throw ArgumentError("Unknown user type");
+  }
+}
+
 void main() {
-  final order = Order("12345", 250.0);
-  order.createOrder();
+  final calculator = DiscountCalculator();
+  final regularDiscount = calculator.calculateDiscount("regular", 100);
+  final premiumDiscount = calculator.calculateDiscount("premium", 100);
+
+  print("Regular Discount: $regularDiscount"); // Output: Regular Discount: 10.0
+  print("Premium Discount: $premiumDiscount"); // Output: Premium Discount: 20.0
 }
 
-class Order {
-  final String orderId;
-  final double amount;
 
-  Order(this.orderId, this.amount);
-
-  void createOrder() {
-    print("Заказ с идентификатором $orderId был создан на сумму \$$amount");
-    _saveOrderToDatabase();
-    _sendOrderConfirmation();
-    _logOrderCreation();
-  }
-
-  void _saveOrderToDatabase() {
-    print("Сохранение данных о заказе с идентификатором $orderId в базу данных");
-  }
-
-  void _sendOrderConfirmation() {
-    print("Отправка информации о заказе с идентификатором $orderId");
-  }
-
-  void _logOrderCreation() {
-    print("Создание события о создании заказа с идентификатором $orderId");
-  }
-}
