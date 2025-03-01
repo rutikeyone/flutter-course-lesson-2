@@ -18,23 +18,23 @@ class Order {
 
 class OrderRepository {
   void createOrder(Order order) {
-    print("Order ${order.orderId} created with amount \$${order.amount}");
+    print("Заказ с идентификатором ${order.orderId} был создан на сумму \$${order.amount}");
   }
 
   void saveOrderToDatabase(Order order) {
-    print("Saving order ${order.orderId} to database");
+    print("Сохранение данных о заказе с идентификатором ${order.orderId} в базу данных");
   }
 }
 
 class NotificationService {
   void sendOrderConfirmation(Order order) {
-    print("Sending confirmation for order ${order.orderId}");
+    print("Отправка информации о заказе с идентификатором ${order.orderId}");
   }
 }
 
 class Logger {
   void logOrderCreation(Order order) {
-    print("Logging order ${order.orderId} creation");
+    print("Создание события о создании заказа с идентификатором ${order.orderId}");
   }
 }
 
