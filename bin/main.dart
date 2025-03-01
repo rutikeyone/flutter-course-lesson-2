@@ -11,16 +11,20 @@ class Order {
 
   void createOrder() {
     print("Order $orderId created with amount \$$amount");
-    processPayment();
-    sendOrderConfirmation();
+    _saveOrderToDatabase();
+    _sendOrderConfirmation();
+    _logOrderCreation();
   }
 
-  void processPayment() {
-    print("Processing payment for order $orderId with amount \$$amount");
+  void _saveOrderToDatabase() {
+    print("Saving order $orderId to database");
   }
 
-  void sendOrderConfirmation() {
+  void _sendOrderConfirmation() {
     print("Sending confirmation for order $orderId");
   }
-}
 
+  void _logOrderCreation() {
+    print("Logging order $orderId creation");
+  }
+}
