@@ -1,21 +1,44 @@
 class DiscountCalculator {
-  double calculateDiscount(String userType, double amount) {
-    if (userType == "regular") {
-      return amount * 0.1; // 10% скидка для обычных пользователей
-    } else if (userType == "premium") {
-      return amount * 0.2; // 20% скидка для премиум пользователей
-    }
-    throw ArgumentError("Unknown user type");
+  double calculateDiscount(User user, double amount) {
+    return user.calculateDiscount(amount);
   }
 }
 
 void main() {
-  final calculator = DiscountCalculator();
-  final regularDiscount = calculator.calculateDiscount("regular", 100);
-  final premiumDiscount = calculator.calculateDiscount("premium", 100);
+  final regularUser = RegularUser();
+  final premiunUser = PremiumUser();
 
-  print("Regular Discount: $regularDiscount"); // Output: Regular Discount: 10.0
-  print("Premium Discount: $premiumDiscount"); // Output: Premium Discount: 20.0
+  final calculator = DiscountCalculator();
+  final regularDiscount = calculator.calculateDiscount(regularUser, 1000);
+  final premiumDiscount = calculator.calculateDiscount(premiunUser, 1000);
+
+  print("Regular Discount: $regularDiscount");
+  print("Premium Discount: $premiumDiscount");
 }
 
+abstract class User {
+  const User(); 
 
+  double calculateDiscount(double amount);
+
+}
+
+class RegularUser extends User {
+  
+    const RegularUser();
+    
+      @override
+      double calculateDiscount(double amount) {
+        return amount * 0.1;
+      }
+
+}
+
+class PremiumUser extends User {
+  
+  @override
+  double calculateDiscount(double amount) {
+    return amount * 0.2;
+  }
+
+}
