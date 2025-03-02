@@ -7,7 +7,7 @@ class Order {
   final String orderId;
   final double amount;
 
-  Order(this.orderId, this.amount);
+  const Order(this.orderId, this.amount);
 
   void createOrder() {
     print("Заказ с идентификатором $orderId был создан на сумму \$$amount");
