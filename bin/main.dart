@@ -1,11 +1,20 @@
-abstract class Worker {
+abstract class Workable {
   void work();
+}
+
+abstract class Eatable {
   void eat();
+}
+
+abstract class Sleepable {
   void sleep();
+}
+
+abstract class Codable {
   void code();
 }
 
-class Programmer implements Worker {
+class Programmer implements Workable, Eatable, Sleepable, Codable {
   @override
   void work() {
     print("Programming...");
@@ -27,20 +36,10 @@ class Programmer implements Worker {
   }
 }
 
-class Robot implements Worker {
+class Robot implements Workable, Codable {
   @override
   void work() {
     print("Working...");
-  }
-
-  @override
-  void eat() {
-    throw UnsupportedError("Robots don't eat!");
-  }
-
-  @override
-  void sleep() {
-    throw UnsupportedError("Robots don't sleep!");
   }
 
   @override
