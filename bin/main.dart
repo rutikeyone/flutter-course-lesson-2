@@ -1,44 +1,50 @@
-class DiscountCalculator {
-  double calculateDiscount(User user, double amount) {
-    return user.calculateDiscount(amount);
-  }
+abstract class Worker {
+  void work();
+  void eat();
+  void sleep();
+  void code();
 }
 
-void main() {
-  final regularUser = RegularUser();
-  final premiunUser = PremiumUser();
-
-  final calculator = DiscountCalculator();
-  final regularDiscount = calculator.calculateDiscount(regularUser, 1000);
-  final premiumDiscount = calculator.calculateDiscount(premiunUser, 1000);
-
-  print("Regular Discount: $regularDiscount");
-  print("Premium Discount: $premiumDiscount");
-}
-
-abstract class User {
-  const User(); 
-
-  double calculateDiscount(double amount);
-
-}
-
-class RegularUser extends User {
-  
-    const RegularUser();
-    
-      @override
-      double calculateDiscount(double amount) {
-        return amount * 0.1;
-      }
-
-}
-
-class PremiumUser extends User {
-  
+class Programmer implements Worker {
   @override
-  double calculateDiscount(double amount) {
-    return amount * 0.2;
+  void work() {
+    print("Programming...");
   }
 
+  @override
+  void eat() {
+    print("Eating...");
+  }
+
+  @override
+  void sleep() {
+    print("Sleeping...");
+  }
+
+  @override
+  void code() {
+    print("Writing code...");
+  }
+}
+
+class Robot implements Worker {
+  @override
+  void work() {
+    print("Working...");
+  }
+
+  @override
+  void eat() {
+    throw UnsupportedError("Robots don't eat!");
+  }
+
+  @override
+  void sleep() {
+    throw UnsupportedError("Robots don't sleep!");
+  }
+
+  @override
+  void code() {
+    print("Writing code...");
+  }
 }
