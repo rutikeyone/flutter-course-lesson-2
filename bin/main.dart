@@ -1,49 +1,21 @@
-abstract class Workable {
-  void work();
-}
-
-abstract class Eatable {
-  void eat();
-}
-
-abstract class Sleepable {
-  void sleep();
-}
-
-abstract class Codable {
-  void code();
-}
-
-class Programmer implements Workable, Eatable, Sleepable, Codable {
-  @override
-  void work() {
-    print("Programming...");
-  }
-
-  @override
-  void eat() {
-    print("Eating...");
-  }
-
-  @override
-  void sleep() {
-    print("Sleeping...");
-  }
-
-  @override
-  void code() {
-    print("Writing code...");
+// Низкоуровневый модуль
+class Tank {
+  void getWater() {
+    print("Water from the tank");
   }
 }
 
-class Robot implements Workable, Codable {
-  @override
-  void work() {
-    print("Working...");
-  }
+// Высокоуровневый модуль
+class CoffeeMachine {
+  final Tank tank = Tank(); // Жёсткая зависимость от Tank
 
-  @override
-  void code() {
-    print("Writing code...");
+  void makeCoffee() {
+    tank.getWater();
+    print("Coffee is ready!");
   }
+}
+
+void main() {
+  final coffeeMachine = CoffeeMachine();
+  coffeeMachine.makeCoffee();
 }
